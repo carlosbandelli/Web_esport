@@ -1,7 +1,7 @@
 import "./styles/main.css";
 import { useEffect, useState } from "react";
 
-import logoimg from "./assets/logo-nlw-esports.png";
+import logoimg from "./assets/bdn.png";
 import { GameBanner } from "./components/GameBanner";
 import { CreateAdBanner } from "./components/CreatAdbanner";
 
@@ -22,7 +22,7 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios("http://localhost:3333/games").then((response) => {
+    axios("https://cyber-c-server.onrender.com/games").then((response) => {
       setGames(response.data);
     });
   }, []);
@@ -33,7 +33,7 @@ function App() {
       <h1 className="text-6xl text-white font-black mt-20">
         Seu{" "}
         <span className="text-transparent bg-nlw-gradient bg-clip-text">
-          duo
+          Celula
         </span>{" "}
         está aqui.
       </h1>

@@ -17,7 +17,7 @@ export function CreateAdModal() {
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
-    axios("http://localhost:3333/games").then((response) => {
+    axios("https://cyber-c-server.onrender.com/games").then((response) => {
       setGames(response.data);
     });
   }, []);
@@ -32,15 +32,18 @@ export function CreateAdModal() {
     }
 
     try {
-      await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
-        name: data.name,
-        yearsPlaying: Number(data.yearsPlaying),
-        discord: data.discord,
-        weekDays: weekDays.map(Number),
-        hourStart: data.hourStart,
-        hourEnd: data.hourEnd,
-        useVoiceChannel: useVoiceChannel,
-      });
+      await axios.post(
+        `https://cyber-c-server.onrender.com/games/${data.game}/ads`,
+        {
+          name: data.name,
+          yearsPlaying: Number(data.yearsPlaying),
+          discord: data.discord,
+          weekDays: weekDays.map(Number),
+          hourStart: data.hourStart,
+          hourEnd: data.hourEnd,
+          useVoiceChannel: useVoiceChannel,
+        }
+      );
 
       alert("Anúcio criado com sucesso!");
     } catch (e) {
